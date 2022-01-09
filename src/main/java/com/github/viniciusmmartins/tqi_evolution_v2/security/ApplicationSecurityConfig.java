@@ -33,7 +33,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/login/logado")
                     .permitAll()
                 .anyRequest().authenticated().and()
-                .formLogin();
+                .httpBasic();//.formLogin();
     }
 
     @Override

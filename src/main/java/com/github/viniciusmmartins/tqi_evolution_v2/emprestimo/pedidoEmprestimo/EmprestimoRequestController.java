@@ -16,7 +16,7 @@ public class EmprestimoRequestController {
 
     @PostMapping(path = "solicitar-emprestimo")
     public String solicitarEmprestimo(@RequestBody EmprestimoRequest emprestimoRequest){
-        emprestimoRequestService.pedidoDeEmprestimo(emprestimoRequest, null);
+        emprestimoRequestService.pedidoDeEmprestimo(emprestimoRequest);
         return "Emprestimo solicitado, entraremos em contato após feita a análise.";
     }
 

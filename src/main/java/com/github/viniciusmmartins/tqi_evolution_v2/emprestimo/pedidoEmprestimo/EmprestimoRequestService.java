@@ -1,22 +1,30 @@
 package com.github.viniciusmmartins.tqi_evolution_v2.emprestimo.pedidoEmprestimo;
 
 import com.github.viniciusmmartins.tqi_evolution_v2.cliente.Cliente;
+import com.github.viniciusmmartins.tqi_evolution_v2.cliente.ClienteRepository;
 import com.github.viniciusmmartins.tqi_evolution_v2.emprestimo.Emprestimo;
 import com.github.viniciusmmartins.tqi_evolution_v2.emprestimo.EmprestimoService;
 import com.github.viniciusmmartins.tqi_evolution_v2.emprestimo.pedidoEmprestimo.usuarioLogado.UsuarioLogado;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 @Service
 @AllArgsConstructor
 public class EmprestimoRequestService {
     private final EmprestimoService emprestimoService;
+    private final ClienteRepository clienteRepository;
+
+    public String pedidoDeEmprestimo(EmprestimoRequest emprestimoRequest){
 
 
-    public String pedidoDeEmprestimo(EmprestimoRequest emprestimoRequest, @UsuarioLogado Cliente cliente){
-
-        //Long clienteLogadoId = cliente.getClienteId();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String userLogin = ((UserDetails)principal).getUsername();
+        Optional<Cliente> cliente = clienteRepository.findClienteByEmail(userLogin);
 
         return emprestimoService.solicitarEmprestimo(
                 new Emprestimo(emprestimoRequest.getValor(),
@@ -27,5 +35,18 @@ public class EmprestimoRequestService {
         );
     }
 
+
+/*
+    public String pedidoDeEmprestimo(EmprestimoRequest emprestimoRequest, @UsuarioLogado Cliente cliente){
+
+        return emprestimoService.solicitarEmprestimo(
+                new Emprestimo(emprestimoRequest.getValor(),
+                        emprestimoRequest.getDataDoPedido(),
+                        emprestimoRequest.getDataPrimeiraParcela(),
+                        emprestimoRequest.getQuantidadeDeParcelas(),
+                        cliente)
+        );
+    }
+*/
 
 }

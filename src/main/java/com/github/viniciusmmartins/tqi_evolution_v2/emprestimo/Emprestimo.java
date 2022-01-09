@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -35,9 +36,9 @@ public class Emprestimo {
 
     @ManyToOne(targetEntity = Cliente.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    private Optional<Cliente> cliente;
 
-    public Emprestimo(Long valor, LocalDate dataDoPedido, LocalDate dataPrimeiraParcela, Integer quantidadeDeParcelas, Cliente cliente) {
+    public Emprestimo(Long valor, LocalDate dataDoPedido, LocalDate dataPrimeiraParcela, Integer quantidadeDeParcelas, Optional<Cliente> cliente) {
         this.valor = valor;
         this.dataDoPedido = dataDoPedido;
         this.dataPrimeiraParcela = dataPrimeiraParcela;
