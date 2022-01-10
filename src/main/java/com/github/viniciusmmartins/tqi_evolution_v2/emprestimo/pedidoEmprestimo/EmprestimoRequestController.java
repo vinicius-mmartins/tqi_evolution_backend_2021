@@ -1,7 +1,7 @@
 package com.github.viniciusmmartins.tqi_evolution_v2.emprestimo.pedidoEmprestimo;
 
-import com.github.viniciusmmartins.tqi_evolution_v2.emprestimo.Emprestimo;
 import com.github.viniciusmmartins.tqi_evolution_v2.emprestimo.EmprestimoService;
+import com.github.viniciusmmartins.tqi_evolution_v2.emprestimo.pedidoEmprestimo.detalhesEmprestimo.DetalhesResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +20,7 @@ public class EmprestimoRequestController {
     @PostMapping(path = "solicitar-emprestimo")
     public String solicitarEmprestimo(@RequestBody EmprestimoRequest emprestimoRequest){
         emprestimoRequestService.pedidoDeEmprestimo(emprestimoRequest);
-        return "Emprestimo solicitado, entraremos em contato após feita a análise.";
+        return "Emprestimo solicitado, entraremos em contato após feito a análise.";
     }
 
     @GetMapping(path = "emprestimos")
@@ -31,4 +31,14 @@ public class EmprestimoRequestController {
             return emprestimoResponse;
         }).collect(Collectors.toList());
     }
+
+    @GetMapping(path = "emprestimos/{emprestimoId}")
+    public List<DetalhesResponse> getDetalhes(@PathVariable Long emprestimoId){
+        return emprestimoService.getEmprestimosByClienteId().stream().map(emprestimo -> {
+            DetalhesResponse detalhesResponse = new DetalhesResponse(emprestimo);
+
+            return detalhesResponse;
+        }).collect(Collectors.toList());
+    }
+
 }

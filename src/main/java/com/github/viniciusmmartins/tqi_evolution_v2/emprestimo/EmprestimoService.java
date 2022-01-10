@@ -21,7 +21,7 @@ public class EmprestimoService {
         return null;
     }
 
-    public List<Emprestimo> getEmprestimosByClienteId() {       //com response vai ser List<EmprestimoResponse>
+    public List<Emprestimo> getEmprestimosByClienteId() {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userLogin = ((UserDetails)principal).getUsername();
@@ -31,4 +31,15 @@ public class EmprestimoService {
         return emprestimoRepository.findEmprestimoByClienteId(cliente.getClienteId());
     }
     // TODO: esse find funciona, mas preciso conferir se o id do usuario logado é igual do emprestimo pra n mostrar os de outros clientes
+
+
+    public Emprestimo getForDetalhes() {
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String userLogin = ((UserDetails) principal).getUsername();
+        Cliente cliente = clienteRepository.findClienteByEmail2(userLogin);
+
+
+        return emprestimoRepository.findForDetalhes(cliente.getClienteId());
+    }    //nao consegui usar com o mapping pro DetalhesResponse
 }
