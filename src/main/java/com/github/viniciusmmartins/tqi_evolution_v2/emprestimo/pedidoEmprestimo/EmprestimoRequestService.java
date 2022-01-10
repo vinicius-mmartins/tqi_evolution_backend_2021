@@ -24,7 +24,7 @@ public class EmprestimoRequestService {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userLogin = ((UserDetails)principal).getUsername();
-        Optional<Cliente> cliente = clienteRepository.findClienteByEmail(userLogin);
+        Cliente cliente = clienteRepository.findClienteByEmail2(userLogin);
 
         return emprestimoService.solicitarEmprestimo(
                 new Emprestimo(emprestimoRequest.getValor(),

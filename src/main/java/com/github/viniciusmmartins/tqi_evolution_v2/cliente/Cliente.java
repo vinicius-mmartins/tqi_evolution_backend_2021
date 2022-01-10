@@ -14,7 +14,7 @@ import java.util.Collections;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @EqualsAndHashCode
 @ToString
 @Entity

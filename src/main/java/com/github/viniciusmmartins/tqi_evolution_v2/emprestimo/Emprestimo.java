@@ -36,9 +36,9 @@ public class Emprestimo {
 
     @ManyToOne(targetEntity = Cliente.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_id")
-    private Optional<Cliente> cliente;
+    private Cliente cliente;
 
-    public Emprestimo(Long valor, LocalDate dataDoPedido, LocalDate dataPrimeiraParcela, Integer quantidadeDeParcelas, Optional<Cliente> cliente) {
+    public Emprestimo(Long valor, LocalDate dataDoPedido, LocalDate dataPrimeiraParcela, Integer quantidadeDeParcelas, Cliente cliente) {
         this.valor = valor;
         this.dataDoPedido = dataDoPedido;
         this.dataPrimeiraParcela = dataPrimeiraParcela;
