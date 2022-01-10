@@ -18,4 +18,7 @@ public class UsuarioLogadoController {
     }
 }
 
-//realmente retorna tudo do cliente como um objeto no return cliente;
+// TODO: o conteudo dessa pasta usuarioLogado foi a primeira tentativa de "capturar" quem está logado.
+
+// TODO: deveria retirar do codigo pra não ficar sujo, mas vou deixar aqui por fins de correção
+

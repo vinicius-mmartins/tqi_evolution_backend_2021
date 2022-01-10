@@ -18,8 +18,8 @@ public class EmprestimoController {
         return "Emprestimo solicitado, entraremos em contato após feita a análise.";
     }*/
 
-    @GetMapping(path = "emprestimos")
+   /* @GetMapping(path = "emprestimos")
     public List<Emprestimo> getEmprestimos(){          //nao sei se aqui e no serviço vai ser optional ou lis ou page ou sla
         return emprestimoService.getEmprestimos();
-    }
+    }*/
 }
