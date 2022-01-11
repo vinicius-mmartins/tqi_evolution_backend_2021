@@ -30,10 +30,9 @@ public class EmprestimoService {
 
         return emprestimoRepository.findEmprestimoByClienteId(cliente.getClienteId());
     }
+
     // TODO: esse find funciona, mas preciso conferir se o id do usuario logado é igual do emprestimo pra n mostrar os de outros clientes
-
-
-    public Emprestimo getForDetalhes() {
+/*    public Emprestimo getForDetalhes() {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userLogin = ((UserDetails) principal).getUsername();
@@ -41,5 +40,5 @@ public class EmprestimoService {
 
 
         return emprestimoRepository.findForDetalhes(cliente.getClienteId());
-    }    //nao consegui usar com o mapping pro DetalhesResponse
+    }    //nao consegui usar com o mapping pro DetalhesResponse */
 }

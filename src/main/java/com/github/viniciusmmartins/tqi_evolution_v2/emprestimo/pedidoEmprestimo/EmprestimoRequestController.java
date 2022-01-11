@@ -31,7 +31,6 @@ public class EmprestimoRequestController {
             return emprestimoResponse;
         }).collect(Collectors.toList());
     }
-
     @GetMapping(path = "emprestimos/{emprestimoId}")
     public List<DetalhesResponse> getDetalhes(@PathVariable Long emprestimoId){
         return emprestimoService.getEmprestimosByClienteId().stream().map(emprestimo -> {
@@ -41,4 +40,10 @@ public class EmprestimoRequestController {
         }).collect(Collectors.toList());
     }
 
+/*
+    @GetMapping(path = "emprestimos/{emprestimoId}")
+    public DetalhesResponse getDetalhes(@PathVariable Long emprestimoId){
+        return emprestimoService.getForDetalhes();
+
+    }*/   //aqui era pra listar somente 1
 }
