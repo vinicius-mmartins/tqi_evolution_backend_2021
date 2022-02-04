@@ -1,5 +1,7 @@
 # tqi_evolution_backend_2021
 
+Estou refazendo este desafio e implementando novas funcionalidades no repositório: <https://github.com/vinicius-mmartins/credit_analysis.>
+
 ## Recursos utilizados:
 
 - Java 11
